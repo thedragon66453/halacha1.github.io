@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>טוחן</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Heebo:wght@400;600;700&display=swap");
+
+    :root {
+      --bg: #f5f3ee;
+      --card: #ffffff;
+      --text: #222222;
+      --primary: #2f5d8a;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Heebo", "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 32px 16px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-link:hover { text-decoration: underline; }
+
+    .page-card {
+      background: var(--card);
+      padding: 24px;
+      border-radius: var(--radius);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+
+    p { margin: 0 0 14px; }
+
+    strong { font-weight: 700; }
+
+    /* פסוקים: גופן Cardo */
+    .verse {
+      font-family: "Cardo", "Times New Roman", serif;
+      font-size: 1.1em;
+    }
+
+    blockquote.verse {
+      margin: 0 0 14px;
+      padding: 4px 14px;
+      border-right: 3px solid var(--primary);
+    }
+    /* תרשים */
+    .chart {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+    }
+    /* כפתור מעבר למבחן */
+    .quiz-btn {
+      display: block;
+      margin-top: 24px;
+      padding: 14px 20px;
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: var(--radius);
+    }
+
+    .quiz-btn:hover { background: #244a6e; }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <a class="back-link" href="melachot.html">→ חזרה למלאכות האסורות בשבת</a>
+
+    <section class="page-card">
+      <h1>טוחן</h1>
+
+      <p>טחינה היא חלוקת גוף אחד לחלקים קטנים. מכאן שבחיתוך ירקות לסלט עלולים לעבור על איסור טוחן, והדבר תלוי בכלי שבו נעשה החיתוך, בגודל החתיכות ובזמן החיתוך, כפי שמפורט בתרשים:</p>
+
+      <a href="../images/tochen-chart.png" target="_blank">
+        <img class="chart" src="../images/tochen-chart.png" alt="תרשים: הכנת סלט ירקות בשבת">
+      </a>
+
+      <a class="quiz-btn" href="melachot-5-quiz.html">למבחן על החלק</a>
+    </section>
+  </main>
+</body>
+</html>

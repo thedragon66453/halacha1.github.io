@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>לימוד הלכה</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700&display=swap");
+
+    :root {
+      --bg: #f5f3ee;
+      --text: #222222;
+      --muted: #666666;
+      --primary: #2f5d8a;
+      --primary-hover: #244a6e;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Heebo", "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 32px 16px;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 0 0 8px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: var(--muted);
+      margin: 0 0 28px;
+    }
+
+    .menu {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .btn {
+      display: block;
+      padding: 18px 20px;
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      font-size: 1.15rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: var(--radius);
+      transition: background 0.15s;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      background: var(--primary-hover);
+    }
+    .progress {
+      margin: 0 0 28px;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .progress-track {
+      height: 12px;
+      background: #dcd8cf;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0;
+      background: var(--primary);
+      border-radius: 999px;
+      transition: width 0.4s;
+    }
+
+    .reset {
+      display: block;
+      margin: 28px auto 0;
+      padding: 6px 12px;
+      background: none;
+      border: 0;
+      color: var(--muted);
+      font: inherit;
+      font-size: 0.85rem;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1>לימוד הלכה</h1>
+    <p class="subtitle">בחר נושא ללימוד</p>
+
+    <section class="progress">
+      <div class="progress-header">
+        <span>ההתקדמות שלך</span>
+        <span id="progress-text">0%</span>
+      </div>
+      <div class="progress-track" id="progress" role="progressbar"
+           aria-label="התקדמות בלימוד" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+    </section>
+
+    <nav class="menu">
+      <a class="btn" href="pages/melachot.html">המלאכות האסורות בשבת</a>
+      <a class="btn" href="pages/borer.html">בורר</a>
+      <a class="btn" href="pages/bishul.html">בישול</a>
+    </nav>
+
+    <button class="reset" id="reset" type="button">איפוס התקדמות</button>
+  </main>
+
+  <script src="js/progress.js"></script>
+  <script>
+    // מעדכן את מד ההתקדמות. מקבל מספר בין 0 ל-100.
+    function setProgress(percent) {
+      var value = Math.max(0, Math.min(100, percent));
+      document.getElementById("progress-fill").style.width = value + "%";
+      document.getElementById("progress-text").textContent = value + "%";
+      document.getElementById("progress").setAttribute("aria-valuenow", value);
+    }
+
+    // האחוז מחושב לפי מספר החלקים שהושלמו (מבחן שנענה נכון ב-100%)
+    function refreshProgress() { setProgress(Progress.percent()); }
+    refreshProgress();
+    window.addEventListener("pageshow", refreshProgress);
+
+    document.getElementById("reset").addEventListener("click", function () {
+      if (confirm("לאפס את כל ההתקדמות?")) {
+        Progress.reset();
+        refreshProgress();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>מבחן: זכור ושמור</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700&display=swap");
+
+    :root {
+      --bg: #f5f3ee;
+      --card: #ffffff;
+      --text: #222222;
+      --muted: #666666;
+      --primary: #2f5d8a;
+      --primary-hover: #244a6e;
+      --green: #2e7d32;
+      --gold: #d4a017;
+      --gold-hover: #b88913;
+      --gold-text: #2b1f00;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Heebo", "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 32px 16px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-link:hover { text-decoration: underline; }
+
+    .page-card {
+      background: var(--card);
+      padding: 24px;
+      border-radius: var(--radius);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+
+    .hint {
+      margin: 0 0 20px;
+      color: var(--muted);
+    }
+
+    /* ===== שאלות ===== */
+    .q {
+      border: 1px solid #e3dfd5;
+      border-radius: var(--radius);
+      padding: 16px;
+      margin: 0 0 16px;
+    }
+
+    .q-text {
+      margin: 0 0 12px;
+      font-weight: 600;
+    }
+
+    .opts {
+      display: grid;
+      gap: 8px;
+    }
+
+    .opt {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1px solid #d8d3c7;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .opt:hover { background: var(--bg); }
+
+    .opt input {
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    .open-input {
+      width: 100%;
+      padding: 10px 12px;
+      font: inherit;
+      border: 1px solid #c9c4b8;
+      border-radius: 10px;
+    }
+
+    .check-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border: 0;
+      border-radius: var(--radius);
+      background: var(--primary);
+      color: #fff;
+      font: inherit;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .check-btn:hover { background: var(--primary-hover); }
+
+    /* ===== תרשים ===== */
+    .tree, .tree ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .tree ul {
+      margin-right: 12px;
+      padding-right: 12px;
+      border-right: 2px solid #b9c4d0;
+    }
+
+    .tree li { margin: 8px 0; }
+
+    .node {
+      display: block;
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #17324d;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .node.root   { background: #4ea72e; font-weight: 700; text-align: center; }
+    .node.yellow { background: #fff36b; }
+    .node.green  { background: #92d050; }
+    .node.orange { background: #e97132; }
+
+    select.node.blank {
+      font: inherit;
+      font-size: 0.95rem;
+      background: #fff;
+      border: 2px dashed var(--primary);
+    }
+
+    /* ===== תוצאה ===== */
+    .result h2 { margin: 0 0 8px; font-size: 1.3rem; }
+    .result.pass h2 { color: var(--gold-hover); }
+    .result.fail h2 { color: #b3412a; }
+
+    .review {
+      list-style: none;
+      margin: 0 0 20px;
+      padding: 0;
+    }
+
+    .review li { padding: 6px 0; }
+    .review .ok  { color: var(--green); }
+    .review .bad { color: #b3412a; }
+
+    .warn { color: #b3412a; font-weight: 600; }
+
+    .progress-track {
+      height: 12px;
+      background: #dcd8cf;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 0 0 20px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--gold);
+      border-radius: 999px;
+    }
+
+    .btn-link {
+      display: block;
+      margin-top: 10px;
+      padding: 14px 20px;
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: var(--radius);
+    }
+
+    .btn-link.primary   { background: var(--primary); color: #fff; }
+    .btn-link.gold      { background: var(--gold); color: var(--gold-text); }
+    .btn-link.secondary { background: #e9e5da; color: var(--text); }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <a class="back-link" href="melachot-1.html">→ חזרה לחומר</a>
+
+    <section class="page-card">
+      <h1>מבחן: זכור ושמור</h1>
+      <p class="hint">4 שאלות אקראיות על החלק. כדי להשלים את החלק צריך לענות נכון על כולן.</p>
+
+      <div id="quiz"></div>
+    </section>
+  </main>
+
+  <script src="../js/progress.js"></script>
+  <script>
+    // השאלות של המבחן. לעריכה: ראה הסבר בהודעה על מבנה השאלות.
+    window.QUIZ = {
+      "part": "melachot-1",
+      "material": "melachot-1.html",
+      "topic": "melachot.html",
+      "questions": [
+        {
+          "type": "mc",
+          "text": "בעשרת הדיברות שבספר שמות נאמר \"זכור את יום השבת\". מה כוללת מצווה זו?",
+          "correct": "לזכור את השבת בקידוש ובתפילה",
+          "wrong": [
+            "האיסור לעשות מלאכה בשבת",
+            "בניית המשכן",
+            "האיסור לתלוש עלים מעץ"
+          ]
+        },
+        {
+          "type": "mc",
+          "text": "בעשרת הדיברות שבספר דברים נאמר \"שמור את יום השבת\". מה כוללת מצווה זו?",
+          "correct": "האיסור לעשות מלאכה בשבת",
+          "wrong": [
+            "לזכור את השבת בקידוש ובתפילה",
+            "בניית המשכן",
+            "הציווי על תרומה לה'"
+          ]
+        },
+        {
+          "type": "mc",
+          "text": "איזה סוג מצווה היא זכירת השבת?",
+          "correct": "מצוות עשה",
+          "wrong": [
+            "מצוות לא תעשה",
+            "איסור דרבנן",
+            "תולדה של אב מלאכה"
+          ]
+        },
+        {
+          "type": "mc",
+          "text": "איזה סוג מצווה היא שמירת השבת?",
+          "correct": "מצוות לא תעשה",
+          "wrong": [
+            "מצוות עשה",
+            "איסור דרבנן",
+            "תולדה של אב מלאכה"
+          ]
+        },
+        {
+          "type": "open",
+          "text": "באיזו מילה נפתח הציווי על השבת בספר שמות, בעשרת הדיברות?",
+          "accept": [
+            "זכור"
+          ]
+        },
+        {
+          "type": "open",
+          "text": "באיזו מילה נפתח הציווי על השבת בספר דברים, בעשרת הדיברות?",
+          "accept": [
+            "שמור"
+          ]
+        },
+        {
+          "type": "open",
+          "text": "באיזה ספר נאמר \"זכור את יום השבת\"?",
+          "accept": [
+            "שמות"
+          ]
+        },
+        {
+          "type": "open",
+          "text": "באיזה ספר נאמר \"שמור את יום השבת\"?",
+          "accept": [
+            "דברים"
+          ]
+        }
+      ]
+    };
+  </script>
+  <script src="../js/quiz.js"></script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>המלאכות האסורות בשבת</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700&display=swap");
+
+    :root {
+      --bg: #f5f3ee;
+      --card: #ffffff;
+      --text: #222222;
+      --muted: #666666;
+      --primary: #2f5d8a;
+      --primary-hover: #244a6e;
+      --green: #2e7d32;
+      --green-hover: #25672a;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Heebo", "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 32px 16px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-link:hover { text-decoration: underline; }
+
+    h1 {
+      margin: 0 0 20px;
+      font-size: 1.6rem;
+    }
+
+    /* ===== רשימת החלקים ===== */
+    .parts {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .part {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+
+    /* הכפתור שפותח את התיאור */
+    .part summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 20px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 1.15rem;
+      font-weight: 700;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .part summary::-webkit-details-marker { display: none; }
+
+    .part summary::after {
+      content: "▾";
+      transition: transform 0.2s;
+    }
+
+    .part[open] summary::after { transform: rotate(180deg); }
+
+    .part summary:hover,
+    .part summary:focus-visible {
+      background: var(--primary-hover);
+    }
+
+    /* התיאור שנפתח */
+    .part-body {
+      padding: 18px 20px 20px;
+    }
+
+    .part-body p {
+      margin: 0 0 16px;
+    }
+
+    .start-btn {
+      display: block;
+      padding: 14px 20px;
+      background: var(--green);
+      color: #fff;
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: var(--radius);
+      transition: background 0.15s;
+    }
+
+    .start-btn:hover,
+    .start-btn:focus-visible {
+      background: var(--green-hover);
+    }
+    .quiz-btn {
+      display: block;
+      margin-top: 10px;
+      padding: 14px 20px;
+      background: #e3ecf5;
+      color: var(--primary);
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: var(--radius);
+    }
+
+    .quiz-btn:hover { background: #d3e0ee; }
+
+    /* ===== חלק שהושלם: זהב ===== */
+    :root {
+      --gold: #d4a017;
+      --gold-hover: #b88913;
+      --gold-text: #2b1f00;
+    }
+
+    .part.done summary {
+      background: var(--gold);
+      color: var(--gold-text);
+    }
+
+    .part.done summary:hover,
+    .part.done summary:focus-visible {
+      background: var(--gold-hover);
+    }
+
+    .part.done .start-btn {
+      background: var(--gold);
+      color: var(--gold-text);
+    }
+
+    .part.done .start-btn:hover,
+    .part.done .start-btn:focus-visible {
+      background: var(--gold-hover);
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <a class="back-link" href="../index.html">→ חזרה לדף הבית</a>
+
+    <h1>המלאכות האסורות בשבת</h1>
+
+    <div class="parts">
+
+      <!-- חלק 1. להוספת חלק: להעתיק בלוק details שלם -->
+      <details class="part" data-part="melachot-1">
+        <summary>זכור ושמור</summary>
+        <div class="part-body">
+          <p>בחלק זה נלמד על ההבדל בין "זכור" ל"שמור" בעשרת הדיברות, ועל מצוות העשה ומצוות לא תעשה הקשורות לשבת.</p>
+          <a class="start-btn" href="melachot-1.html">להתחיל ללמוד</a>
+          <a class="quiz-btn" href="melachot-1-quiz.html">למבחן על החלק</a>
+        </div>
+      </details>
+
+      <!-- חלק 2 -->
+      <details class="part" data-part="melachot-2">
+        <summary>בניית המשכן אינה דוחה את השבת</summary>
+        <div class="part-body">
+          <p>בחלק זה נלמד מדוע הקדים משה את האזהרה על שמירת השבת לציווי על בניית המשכן, ומה למדו מכך חכמים.</p>
+          <a class="start-btn" href="melachot-2.html">להתחיל ללמוד</a>
+          <a class="quiz-btn" href="melachot-2-quiz.html">למבחן על החלק</a>
+        </div>
+      </details>
+
+      <!-- חלק 3 -->
+      <details class="part" data-part="melachot-3">
+        <summary>אבות מלאכה ותולדות</summary>
+        <div class="part-body">
+          <p>בחלק זה נלמד שהמלאכות האסורות בשבת הן המלאכות שנעשו במשכן, מהם ל"ט אבות מלאכה, ומהן התולדות שלהם.</p>
+          <a class="start-btn" href="melachot-3.html">להתחיל ללמוד</a>
+          <a class="quiz-btn" href="melachot-3-quiz.html">למבחן על החלק</a>
+        </div>
+      </details>
+
+      <!-- חלק 4 -->
+      <details class="part" data-part="melachot-4">
+        <summary>איסורי דרבנן</summary>
+        <div class="part-body">
+          <p>בחלק זה נלמד על פעולות שנאסרו בשבת על ידי חכמים, מחשש שהעושה אותן יגיע לעשות אחת מל"ט המלאכות.</p>
+          <a class="start-btn" href="melachot-4.html">להתחיל ללמוד</a>
+          <a class="quiz-btn" href="melachot-4-quiz.html">למבחן על החלק</a>
+        </div>
+      </details>
+
+      <!-- חלק 5 -->
+      <details class="part" data-part="melachot-5">
+        <summary>טוחן</summary>
+        <div class="part-body">
+          <p>בחלק זה נלמד על מלאכת טוחן, ומתי חיתוך ירקות לסלט עלול להיחשב לטחינה, לפי תרשים.</p>
+          <a class="start-btn" href="melachot-5.html">להתחיל ללמוד</a>
+          <a class="quiz-btn" href="melachot-5-quiz.html">למבחן על החלק</a>
+        </div>
+      </details>
+
+    </div>
+  </main>
+
+  <script src="../js/progress.js"></script>
+  <script>
+    // צובע בזהב חלקים שהושלמו ומשנה את הכפתור ל"לחזור על החומר"
+    function refreshParts() {
+      document.querySelectorAll(".part[data-part]").forEach(function (part) {
+        var done = Progress.isDone(part.getAttribute("data-part"));
+        part.classList.toggle("done", done);
+        part.querySelector(".start-btn").textContent = done ? "לחזור על החומר" : "להתחיל ללמוד";
+      });
+    }
+    refreshParts();
+    window.addEventListener("pageshow", refreshParts);
+  </script>
+</body>
+</html>
